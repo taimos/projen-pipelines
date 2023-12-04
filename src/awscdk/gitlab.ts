@@ -52,8 +52,16 @@ export class GitlabCDKPipeline extends CDKPipeline {
           expireIn: '30 days',
           name: 'CDK Assembly - $CI_JOB_NAME-$CI_COMMIT_REF_SLUG',
           untracked: false,
-          paths:
-            ['cdk.out'],
+          paths: ['cdk.out'],
+        },
+      },
+      '.artifacts_cdkdeploy': {
+        artifacts: {
+          when: gitlab.CacheWhen.ON_SUCCESS,
+          expireIn: '30 days',
+          name: 'CDK Outputs - $CI_JOB_NAME-$CI_COMMIT_REF_SLUG',
+          untracked: false,
+          paths: ['cdk-outputs-*.json'],
         },
       },
       '.aws_base': {
@@ -147,7 +155,7 @@ awslogin() {
         ],
       },
       [`deploy-${stage.name}`]: {
-        extends: ['.aws_base'],
+        extends: ['.aws_base', '.artifacts_cdkdeploy'],
         stage: stage.name,
         ...stage.manualApproval && {
           when: gitlab.JobWhen.MANUAL,

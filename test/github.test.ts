@@ -2,7 +2,7 @@ import { AwsCdkTypeScriptApp } from 'projen/lib/awscdk';
 import { synthSnapshot } from 'projen/lib/util/synth';
 import { GithubCDKPipeline } from '../src';
 
-test('Gitlab snapshot', () => {
+test('Github snapshot', () => {
   const p = new AwsCdkTypeScriptApp({
     cdkVersion: '2.102.0',
     defaultReleaseBranch: 'main',

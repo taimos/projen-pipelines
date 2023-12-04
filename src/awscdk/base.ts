@@ -340,7 +340,7 @@ ${appCode}
    */
   protected createPersonalStage() {
     this.project.addTask('deploy:personal', {
-      exec: `cdk deploy ${this.stackPrefix}-personal`,
+      exec: `cdk --outputs-file cdk-outputs-personal.json deploy ${this.stackPrefix}-personal`,
     });
     this.project.addTask('watch:personal', {
       exec: `cdk deploy --watch --hotswap ${this.stackPrefix}-personal`,
@@ -359,7 +359,7 @@ ${appCode}
    */
   protected createFeatureStage() {
     this.project.addTask('deploy:feature', {
-      exec: `cdk --progress events --require-approval never deploy ${this.stackPrefix}-feature`,
+      exec: `cdk --outputs-file cdk-outputs-feature.json --progress events --require-approval never deploy ${this.stackPrefix}-feature`,
     });
     this.project.addTask('diff:feature', {
       exec: `cdk diff ${this.stackPrefix}-feature`,
@@ -375,7 +375,7 @@ ${appCode}
    */
   protected createPipelineStage(stage: DeploymentStage) {
     this.project.addTask(`deploy:${stage.name}`, {
-      exec: `cdk --app ${this.app.cdkConfig.cdkout} --progress events --require-approval never deploy ${this.stackPrefix}-${stage.name}`,
+      exec: `cdk --app ${this.app.cdkConfig.cdkout} --outputs-file cdk-outputs-${stage.name}.json --progress events --require-approval never deploy ${this.stackPrefix}-${stage.name}`,
     });
     this.project.addTask(`diff:${stage.name}`, {
       exec: `cdk --app ${this.app.cdkConfig.cdkout} diff ${this.stackPrefix}-${stage.name}`,
