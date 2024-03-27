@@ -52,6 +52,7 @@ synth:
   extends:
     - .aws_base
     - .artifacts_cdk
+  needs: []
   stage: synth
   script:
     - echo \\"Running CDK synth\\"
@@ -291,6 +292,7 @@ synth:
   extends:
     - .aws_base
     - .artifacts_cdk
+  needs: []
   stage: synth
   tags:
     - defaultTag
@@ -441,6 +443,7 @@ synth:
   extends:
     - .aws_base
     - .artifacts_cdk
+  needs: []
   stage: synth
   tags:
     - synthTag

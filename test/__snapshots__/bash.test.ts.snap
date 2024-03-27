@@ -112,18 +112,23 @@ exports[`Bash snapshot 2`] = `
 
 Synthesize your CDK project:
 \`\`\`bash
+
 npx projen install:ci
+
 npx projen build
+
 \`\`\`
 
 Publish all your CDK assets like Lambda function code and container images:
 \`\`\`bash
+
 npx projen install:ci
 npx projen publish:assets
 \`\`\`
 
 If you want to store your cloud assembly and assets for future use or compliance reasons, use:
 \`\`\`bash
+
 npx projen install:ci
 npx projen publish:assets
 npx projen bump

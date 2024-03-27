@@ -12,6 +12,7 @@ on:
 jobs:
   synth:
     name: Synth CDK application
+    needs: []
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -107,6 +108,7 @@ on:
 jobs:
   deploy:
     name: Release stage prod to AWS
+    needs: []
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -532,6 +534,7 @@ on:
 jobs:
   synth:
     name: Synth CDK application
+    needs: []
     runs-on: ubuntu-latest
     permissions:
       id-token: write

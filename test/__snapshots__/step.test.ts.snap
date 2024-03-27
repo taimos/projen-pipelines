@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimpleCommandStep works correctly 1`] = `
+Object {
+  "commands": Array [
+    "echo \\"Hello World\\"",
+    "echo 42",
+  ],
+}
+`;
+
+exports[`SimpleCommandStep works correctly 2`] = `
+Object {
+  "needs": Array [],
+  "steps": Array [
+    Object {
+      "run": "echo \\"Hello World\\"",
+    },
+    Object {
+      "run": "echo 42",
+    },
+  ],
+}
+`;
+
+exports[`SimpleCommandStep works correctly 3`] = `
+Object {
+  "commands": Array [
+    "echo \\"Hello World\\"",
+    "echo 42",
+  ],
+  "extensions": Array [],
+  "needs": Array [],
+}
+`;

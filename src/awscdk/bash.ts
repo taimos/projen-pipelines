@@ -1,5 +1,6 @@
 import { TextFile, awscdk } from 'projen';
 import { CDKPipeline, CDKPipelineOptions } from './base';
+import { PipelineEngine } from '../engine';
 
 export interface BashCDKPipelineOptions extends CDKPipelineOptions {
   //
@@ -19,17 +20,25 @@ export class BashCDKPipeline extends CDKPipeline {
 
     readme.addLine('Synthesize your CDK project:');
     readme.addLine('```bash');
+    readme.addLine(`${(options.preInstallSteps ?? []).flatMap(s => s.toBash().commands).join('\n')}`);
+    readme.addLine(`${this.renderInstallCommands().join('\n')}`);
+    readme.addLine(`${(options.preSynthSteps ?? []).flatMap(s => s.toBash().commands).join('\n')}`);
     readme.addLine(`${this.renderSynthCommands().join('\n')}`);
+    readme.addLine(`${(options.postSynthSteps ?? []).flatMap(s => s.toBash().commands).join('\n')}`);
     readme.addLine('```');
     readme.addLine('');
 
     readme.addLine('Publish all your CDK assets like Lambda function code and container images:');
     readme.addLine('```bash');
+    readme.addLine(`${(options.preInstallSteps ?? []).flatMap(s => s.toBash().commands).join('\n')}`);
+    readme.addLine(`${this.renderInstallCommands().join('\n')}`);
     readme.addLine(`${this.getAssetUploadCommands(false).join('\n')}`);
     readme.addLine('```');
     readme.addLine('');
     readme.addLine('If you want to store your cloud assembly and assets for future use or compliance reasons, use:');
     readme.addLine('```bash');
+    readme.addLine(`${(options.preInstallSteps ?? []).flatMap(s => s.toBash().commands).join('\n')}`);
+    readme.addLine(`${this.renderInstallCommands().join('\n')}`);
     readme.addLine(`${this.getAssetUploadCommands(true).join('\n')}`);
     readme.addLine('```');
     readme.addLine('');
@@ -64,6 +73,10 @@ export class BashCDKPipeline extends CDKPipeline {
     readme.addLine('```');
     readme.addLine('');
 
+  }
+
+  public engineType(): PipelineEngine {
+    return PipelineEngine.BASH;
   }
 
 }

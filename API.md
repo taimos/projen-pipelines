@@ -39,6 +39,7 @@ new BashCDKPipeline(app: AwsCdkTypeScriptApp, options: BashCDKPipelineOptions)
 | <code><a href="#projen-pipelines.BashCDKPipeline.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
 | <code><a href="#projen-pipelines.BashCDKPipeline.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
 | <code><a href="#projen-pipelines.BashCDKPipeline.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
+| <code><a href="#projen-pipelines.BashCDKPipeline.engineType">engineType</a></code> | *No description.* |
 
 ---
 
@@ -75,6 +76,12 @@ public synthesize(): void
 ```
 
 Synthesizes files to the project output directory.
+
+##### `engineType` <a name="engineType" id="projen-pipelines.BashCDKPipeline.engineType"></a>
+
+```typescript
+public engineType(): PipelineEngine
+```
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -228,6 +235,7 @@ new CDKPipeline(app: AwsCdkTypeScriptApp, baseOptions: CDKPipelineOptions)
 | <code><a href="#projen-pipelines.CDKPipeline.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
 | <code><a href="#projen-pipelines.CDKPipeline.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
 | <code><a href="#projen-pipelines.CDKPipeline.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
+| <code><a href="#projen-pipelines.CDKPipeline.engineType">engineType</a></code> | *No description.* |
 
 ---
 
@@ -264,6 +272,12 @@ public synthesize(): void
 ```
 
 Synthesizes files to the project output directory.
+
+##### `engineType` <a name="engineType" id="projen-pipelines.CDKPipeline.engineType"></a>
+
+```typescript
+public engineType(): PipelineEngine
+```
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -413,6 +427,7 @@ new GithubCDKPipeline(app: AwsCdkTypeScriptApp, options: GithubCDKPipelineOption
 | <code><a href="#projen-pipelines.GithubCDKPipeline.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
 | <code><a href="#projen-pipelines.GithubCDKPipeline.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
 | <code><a href="#projen-pipelines.GithubCDKPipeline.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
+| <code><a href="#projen-pipelines.GithubCDKPipeline.engineType">engineType</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.GithubCDKPipeline.createAssetUpload">createAssetUpload</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.GithubCDKPipeline.createDeployment">createDeployment</a></code> | *No description.* |
 
@@ -451,6 +466,12 @@ public synthesize(): void
 ```
 
 Synthesizes files to the project output directory.
+
+##### `engineType` <a name="engineType" id="projen-pipelines.GithubCDKPipeline.engineType"></a>
+
+```typescript
+public engineType(): PipelineEngine
+```
 
 ##### `createAssetUpload` <a name="createAssetUpload" id="projen-pipelines.GithubCDKPipeline.createAssetUpload"></a>
 
@@ -638,6 +659,7 @@ Configuration options for the pipeline.
 | <code><a href="#projen-pipelines.GitlabCDKPipeline.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
 | <code><a href="#projen-pipelines.GitlabCDKPipeline.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
 | <code><a href="#projen-pipelines.GitlabCDKPipeline.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
+| <code><a href="#projen-pipelines.GitlabCDKPipeline.engineType">engineType</a></code> | *No description.* |
 
 ---
 
@@ -674,6 +696,12 @@ public synthesize(): void
 ```
 
 Synthesizes files to the project output directory.
+
+##### `engineType` <a name="engineType" id="projen-pipelines.GitlabCDKPipeline.engineType"></a>
+
+```typescript
+public engineType(): PipelineEngine
+```
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -852,8 +880,11 @@ const bashCDKPipelineOptions: BashCDKPipelineOptions = { ... }
 | <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.featureStages">featureStages</a></code> | <code><a href="#projen-pipelines.StageOptions">StageOptions</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.personalStage">personalStage</a></code> | <code><a href="#projen-pipelines.StageOptions">StageOptions</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.postSynthCommands">postSynthCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.postSynthSteps">postSynthSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.preInstallCommands">preInstallCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.preInstallSteps">preInstallSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.preSynthCommands">preSynthCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.preSynthSteps">preSynthSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.BashCDKPipelineOptions.property.stackPrefix">stackPrefix</a></code> | <code>string</code> | This field is used to define a prefix for the AWS Stack resources created during the pipeline's operation. |
 
 ---
@@ -941,6 +972,16 @@ public readonly postSynthCommands: string[];
 
 ---
 
+##### `postSynthSteps`<sup>Optional</sup> <a name="postSynthSteps" id="projen-pipelines.BashCDKPipelineOptions.property.postSynthSteps"></a>
+
+```typescript
+public readonly postSynthSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
+
+---
+
 ##### `preInstallCommands`<sup>Optional</sup> <a name="preInstallCommands" id="projen-pipelines.BashCDKPipelineOptions.property.preInstallCommands"></a>
 
 ```typescript
@@ -948,6 +989,16 @@ public readonly preInstallCommands: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `preInstallSteps`<sup>Optional</sup> <a name="preInstallSteps" id="projen-pipelines.BashCDKPipelineOptions.property.preInstallSteps"></a>
+
+```typescript
+public readonly preInstallSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
 
 ---
 
@@ -961,6 +1012,16 @@ public readonly preSynthCommands: string[];
 
 ---
 
+##### `preSynthSteps`<sup>Optional</sup> <a name="preSynthSteps" id="projen-pipelines.BashCDKPipelineOptions.property.preSynthSteps"></a>
+
+```typescript
+public readonly preSynthSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
+
+---
+
 ##### `stackPrefix`<sup>Optional</sup> <a name="stackPrefix" id="projen-pipelines.BashCDKPipelineOptions.property.stackPrefix"></a>
 
 ```typescript
@@ -971,6 +1032,34 @@ public readonly stackPrefix: string;
 - *Default:* project name
 
 This field is used to define a prefix for the AWS Stack resources created during the pipeline's operation.
+
+---
+
+### BashStep <a name="BashStep" id="projen-pipelines.BashStep"></a>
+
+#### Initializer <a name="Initializer" id="projen-pipelines.BashStep.Initializer"></a>
+
+```typescript
+import { BashStep } from 'projen-pipelines'
+
+const bashStep: BashStep = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#projen-pipelines.BashStep.property.commands">commands</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `commands`<sup>Required</sup> <a name="commands" id="projen-pipelines.BashStep.property.commands"></a>
+
+```typescript
+public readonly commands: string[];
+```
+
+- *Type:* string[]
 
 ---
 
@@ -1001,8 +1090,11 @@ const cDKPipelineOptions: CDKPipelineOptions = { ... }
 | <code><a href="#projen-pipelines.CDKPipelineOptions.property.featureStages">featureStages</a></code> | <code><a href="#projen-pipelines.StageOptions">StageOptions</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.CDKPipelineOptions.property.personalStage">personalStage</a></code> | <code><a href="#projen-pipelines.StageOptions">StageOptions</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.CDKPipelineOptions.property.postSynthCommands">postSynthCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.CDKPipelineOptions.property.postSynthSteps">postSynthSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.CDKPipelineOptions.property.preInstallCommands">preInstallCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.CDKPipelineOptions.property.preInstallSteps">preInstallSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.CDKPipelineOptions.property.preSynthCommands">preSynthCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.CDKPipelineOptions.property.preSynthSteps">preSynthSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.CDKPipelineOptions.property.stackPrefix">stackPrefix</a></code> | <code>string</code> | This field is used to define a prefix for the AWS Stack resources created during the pipeline's operation. |
 
 ---
@@ -1090,6 +1182,16 @@ public readonly postSynthCommands: string[];
 
 ---
 
+##### `postSynthSteps`<sup>Optional</sup> <a name="postSynthSteps" id="projen-pipelines.CDKPipelineOptions.property.postSynthSteps"></a>
+
+```typescript
+public readonly postSynthSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
+
+---
+
 ##### `preInstallCommands`<sup>Optional</sup> <a name="preInstallCommands" id="projen-pipelines.CDKPipelineOptions.property.preInstallCommands"></a>
 
 ```typescript
@@ -1100,6 +1202,16 @@ public readonly preInstallCommands: string[];
 
 ---
 
+##### `preInstallSteps`<sup>Optional</sup> <a name="preInstallSteps" id="projen-pipelines.CDKPipelineOptions.property.preInstallSteps"></a>
+
+```typescript
+public readonly preInstallSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
+
+---
+
 ##### `preSynthCommands`<sup>Optional</sup> <a name="preSynthCommands" id="projen-pipelines.CDKPipelineOptions.property.preSynthCommands"></a>
 
 ```typescript
@@ -1107,6 +1219,16 @@ public readonly preSynthCommands: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `preSynthSteps`<sup>Optional</sup> <a name="preSynthSteps" id="projen-pipelines.CDKPipelineOptions.property.preSynthSteps"></a>
+
+```typescript
+public readonly preSynthSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
 
 ---
 
@@ -1249,8 +1371,11 @@ const githubCDKPipelineOptions: GithubCDKPipelineOptions = { ... }
 | <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.featureStages">featureStages</a></code> | <code><a href="#projen-pipelines.StageOptions">StageOptions</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.personalStage">personalStage</a></code> | <code><a href="#projen-pipelines.StageOptions">StageOptions</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.postSynthCommands">postSynthCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.postSynthSteps">postSynthSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.preInstallCommands">preInstallCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.preInstallSteps">preInstallSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.preSynthCommands">preSynthCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.preSynthSteps">preSynthSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.stackPrefix">stackPrefix</a></code> | <code>string</code> | This field is used to define a prefix for the AWS Stack resources created during the pipeline's operation. |
 | <code><a href="#projen-pipelines.GithubCDKPipelineOptions.property.iamRoleArns">iamRoleArns</a></code> | <code><a href="#projen-pipelines.GithubIamRoleConfig">GithubIamRoleConfig</a></code> | *No description.* |
 
@@ -1339,6 +1464,16 @@ public readonly postSynthCommands: string[];
 
 ---
 
+##### `postSynthSteps`<sup>Optional</sup> <a name="postSynthSteps" id="projen-pipelines.GithubCDKPipelineOptions.property.postSynthSteps"></a>
+
+```typescript
+public readonly postSynthSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
+
+---
+
 ##### `preInstallCommands`<sup>Optional</sup> <a name="preInstallCommands" id="projen-pipelines.GithubCDKPipelineOptions.property.preInstallCommands"></a>
 
 ```typescript
@@ -1349,6 +1484,16 @@ public readonly preInstallCommands: string[];
 
 ---
 
+##### `preInstallSteps`<sup>Optional</sup> <a name="preInstallSteps" id="projen-pipelines.GithubCDKPipelineOptions.property.preInstallSteps"></a>
+
+```typescript
+public readonly preInstallSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
+
+---
+
 ##### `preSynthCommands`<sup>Optional</sup> <a name="preSynthCommands" id="projen-pipelines.GithubCDKPipelineOptions.property.preSynthCommands"></a>
 
 ```typescript
@@ -1356,6 +1501,16 @@ public readonly preSynthCommands: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `preSynthSteps`<sup>Optional</sup> <a name="preSynthSteps" id="projen-pipelines.GithubCDKPipelineOptions.property.preSynthSteps"></a>
+
+```typescript
+public readonly preSynthSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
 
 ---
 
@@ -1443,6 +1598,45 @@ public readonly synth: string;
 
 ---
 
+### GithubStep <a name="GithubStep" id="projen-pipelines.GithubStep"></a>
+
+#### Initializer <a name="Initializer" id="projen-pipelines.GithubStep.Initializer"></a>
+
+```typescript
+import { GithubStep } from 'projen-pipelines'
+
+const githubStep: GithubStep = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#projen-pipelines.GithubStep.property.needs">needs</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GithubStep.property.steps">steps</a></code> | <code>projen.github.workflows.JobStep[]</code> | *No description.* |
+
+---
+
+##### `needs`<sup>Required</sup> <a name="needs" id="projen-pipelines.GithubStep.property.needs"></a>
+
+```typescript
+public readonly needs: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `steps`<sup>Required</sup> <a name="steps" id="projen-pipelines.GithubStep.property.steps"></a>
+
+```typescript
+public readonly steps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+
+---
+
 ### GitlabCDKPipelineOptions <a name="GitlabCDKPipelineOptions" id="projen-pipelines.GitlabCDKPipelineOptions"></a>
 
 Options for configuring the GitLab CDK pipeline, extending the base CDK pipeline options.
@@ -1466,8 +1660,11 @@ const gitlabCDKPipelineOptions: GitlabCDKPipelineOptions = { ... }
 | <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.featureStages">featureStages</a></code> | <code><a href="#projen-pipelines.StageOptions">StageOptions</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.personalStage">personalStage</a></code> | <code><a href="#projen-pipelines.StageOptions">StageOptions</a></code> | *No description.* |
 | <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.postSynthCommands">postSynthCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.postSynthSteps">postSynthSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.preInstallCommands">preInstallCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.preInstallSteps">preInstallSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.preSynthCommands">preSynthCommands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.preSynthSteps">preSynthSteps</a></code> | <code><a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]</code> | *No description.* |
 | <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.stackPrefix">stackPrefix</a></code> | <code>string</code> | This field is used to define a prefix for the AWS Stack resources created during the pipeline's operation. |
 | <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.iamRoleArns">iamRoleArns</a></code> | <code><a href="#projen-pipelines.GitlabIamRoleConfig">GitlabIamRoleConfig</a></code> | IAM role ARNs configuration for the pipeline. |
 | <code><a href="#projen-pipelines.GitlabCDKPipelineOptions.property.image">image</a></code> | <code>string</code> | The Docker image to use for running the pipeline jobs. |
@@ -1558,6 +1755,16 @@ public readonly postSynthCommands: string[];
 
 ---
 
+##### `postSynthSteps`<sup>Optional</sup> <a name="postSynthSteps" id="projen-pipelines.GitlabCDKPipelineOptions.property.postSynthSteps"></a>
+
+```typescript
+public readonly postSynthSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
+
+---
+
 ##### `preInstallCommands`<sup>Optional</sup> <a name="preInstallCommands" id="projen-pipelines.GitlabCDKPipelineOptions.property.preInstallCommands"></a>
 
 ```typescript
@@ -1568,6 +1775,16 @@ public readonly preInstallCommands: string[];
 
 ---
 
+##### `preInstallSteps`<sup>Optional</sup> <a name="preInstallSteps" id="projen-pipelines.GitlabCDKPipelineOptions.property.preInstallSteps"></a>
+
+```typescript
+public readonly preInstallSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
+
+---
+
 ##### `preSynthCommands`<sup>Optional</sup> <a name="preSynthCommands" id="projen-pipelines.GitlabCDKPipelineOptions.property.preSynthCommands"></a>
 
 ```typescript
@@ -1575,6 +1792,16 @@ public readonly preSynthCommands: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `preSynthSteps`<sup>Optional</sup> <a name="preSynthSteps" id="projen-pipelines.GitlabCDKPipelineOptions.property.preSynthSteps"></a>
+
+```typescript
+public readonly preSynthSteps: PipelineStep[];
+```
+
+- *Type:* <a href="#projen-pipelines.PipelineStep">PipelineStep</a>[]
 
 ---
 
@@ -1800,6 +2027,56 @@ Runner tags for the synthesis stage.
 
 ---
 
+### GitlabStep <a name="GitlabStep" id="projen-pipelines.GitlabStep"></a>
+
+#### Initializer <a name="Initializer" id="projen-pipelines.GitlabStep.Initializer"></a>
+
+```typescript
+import { GitlabStep } from 'projen-pipelines'
+
+const gitlabStep: GitlabStep = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#projen-pipelines.GitlabStep.property.commands">commands</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GitlabStep.property.extensions">extensions</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#projen-pipelines.GitlabStep.property.needs">needs</a></code> | <code>projen.gitlab.Need[]</code> | *No description.* |
+
+---
+
+##### `commands`<sup>Required</sup> <a name="commands" id="projen-pipelines.GitlabStep.property.commands"></a>
+
+```typescript
+public readonly commands: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `extensions`<sup>Required</sup> <a name="extensions" id="projen-pipelines.GitlabStep.property.extensions"></a>
+
+```typescript
+public readonly extensions: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `needs`<sup>Required</sup> <a name="needs" id="projen-pipelines.GitlabStep.property.needs"></a>
+
+```typescript
+public readonly needs: Need[];
+```
+
+- *Type:* projen.gitlab.Need[]
+
+---
+
 ### StageOptions <a name="StageOptions" id="projen-pipelines.StageOptions"></a>
 
 #### Initializer <a name="Initializer" id="projen-pipelines.StageOptions.Initializer"></a>
@@ -1828,6 +2105,120 @@ public readonly env: Environment;
 
 ---
 
+## Classes <a name="Classes" id="Classes"></a>
+
+### PipelineStep <a name="PipelineStep" id="projen-pipelines.PipelineStep"></a>
+
+#### Initializers <a name="Initializers" id="projen-pipelines.PipelineStep.Initializer"></a>
+
+```typescript
+import { PipelineStep } from 'projen-pipelines'
+
+new PipelineStep(project: Project)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#projen-pipelines.PipelineStep.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="projen-pipelines.PipelineStep.Initializer.parameter.project"></a>
+
+- *Type:* projen.Project
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#projen-pipelines.PipelineStep.toBash">toBash</a></code> | *No description.* |
+| <code><a href="#projen-pipelines.PipelineStep.toGithub">toGithub</a></code> | *No description.* |
+| <code><a href="#projen-pipelines.PipelineStep.toGitlab">toGitlab</a></code> | *No description.* |
+
+---
+
+##### `toBash` <a name="toBash" id="projen-pipelines.PipelineStep.toBash"></a>
+
+```typescript
+public toBash(): BashStep
+```
+
+##### `toGithub` <a name="toGithub" id="projen-pipelines.PipelineStep.toGithub"></a>
+
+```typescript
+public toGithub(): GithubStep
+```
+
+##### `toGitlab` <a name="toGitlab" id="projen-pipelines.PipelineStep.toGitlab"></a>
+
+```typescript
+public toGitlab(): GitlabStep
+```
+
+
+
+
+### SimpleCommandStep <a name="SimpleCommandStep" id="projen-pipelines.SimpleCommandStep"></a>
+
+#### Initializers <a name="Initializers" id="projen-pipelines.SimpleCommandStep.Initializer"></a>
+
+```typescript
+import { SimpleCommandStep } from 'projen-pipelines'
+
+new SimpleCommandStep(project: Project, commands: string[])
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#projen-pipelines.SimpleCommandStep.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#projen-pipelines.SimpleCommandStep.Initializer.parameter.commands">commands</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="projen-pipelines.SimpleCommandStep.Initializer.parameter.project"></a>
+
+- *Type:* projen.Project
+
+---
+
+##### `commands`<sup>Required</sup> <a name="commands" id="projen-pipelines.SimpleCommandStep.Initializer.parameter.commands"></a>
+
+- *Type:* string[]
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#projen-pipelines.SimpleCommandStep.toBash">toBash</a></code> | *No description.* |
+| <code><a href="#projen-pipelines.SimpleCommandStep.toGithub">toGithub</a></code> | *No description.* |
+| <code><a href="#projen-pipelines.SimpleCommandStep.toGitlab">toGitlab</a></code> | *No description.* |
+
+---
+
+##### `toBash` <a name="toBash" id="projen-pipelines.SimpleCommandStep.toBash"></a>
+
+```typescript
+public toBash(): BashStep
+```
+
+##### `toGithub` <a name="toGithub" id="projen-pipelines.SimpleCommandStep.toGithub"></a>
+
+```typescript
+public toGithub(): GithubStep
+```
+
+##### `toGitlab` <a name="toGitlab" id="projen-pipelines.SimpleCommandStep.toGitlab"></a>
+
+```typescript
+public toGitlab(): GitlabStep
+```
+
+
+
 
 
 ## Enums <a name="Enums" id="Enums"></a>
@@ -1844,6 +2235,7 @@ The component will render workflows for the given system
 | --- | --- |
 | <code><a href="#projen-pipelines.PipelineEngine.GITHUB">GITHUB</a></code> | Create GitHub actions. |
 | <code><a href="#projen-pipelines.PipelineEngine.GITLAB">GITLAB</a></code> | Create a .gitlab-ci.yaml file. |
+| <code><a href="#projen-pipelines.PipelineEngine.BASH">BASH</a></code> | Create bash scripts. |
 
 ---
 
@@ -1857,6 +2249,13 @@ Create GitHub actions.
 ##### `GITLAB` <a name="GITLAB" id="projen-pipelines.PipelineEngine.GITLAB"></a>
 
 Create a .gitlab-ci.yaml file.
+
+---
+
+
+##### `BASH` <a name="BASH" id="projen-pipelines.PipelineEngine.BASH"></a>
+
+Create bash scripts.
 
 ---
 

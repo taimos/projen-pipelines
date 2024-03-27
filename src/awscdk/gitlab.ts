@@ -1,5 +1,6 @@
 import { awscdk, gitlab } from 'projen';
 import { CDKPipeline, CDKPipelineOptions, DeploymentStage } from './base';
+import { PipelineEngine } from '../engine';
 
 /**
  * Configuration for IAM roles used within the GitLab CI/CD pipeline for various stages.
@@ -167,12 +168,33 @@ awslogin() {
     if (this.options.iamRoleArns?.synth) {
       script.push(`awslogin '${this.options.iamRoleArns.synth}'`);
     }
+    const extensions = ['.aws_base', '.artifacts_cdk'];
+    const needs = [];
+
+    const preInstallSteps = (this.options.preInstallSteps ?? []).map(s => s.toGitlab());
+    script.push(...preInstallSteps.flatMap(s => s.commands));
+    extensions.push(...preInstallSteps.flatMap(s => s.extensions));
+    needs.push(...preInstallSteps.flatMap(s => s.needs));
+
+    script.push(...this.renderInstallCommands());
+
+    const preSynthSteps = (this.options.preSynthSteps ?? []).map(s => s.toGitlab());
+    script.push(...preSynthSteps.flatMap(s => s.commands));
+    extensions.push(...preSynthSteps.flatMap(s => s.extensions));
+    needs.push(...preSynthSteps.flatMap(s => s.needs));
+
     script.push(...this.renderSynthCommands());
+
+    const postSynthSteps = (this.options.postSynthSteps ?? []).map(s => s.toGitlab());
+    script.push(...postSynthSteps.flatMap(s => s.commands));
+    extensions.push(...postSynthSteps.flatMap(s => s.extensions));
+    needs.push(...postSynthSteps.flatMap(s => s.needs));
 
     this.config.addStages('synth');
     this.config.addJobs({
       synth: {
-        extends: ['.aws_base', '.artifacts_cdk'],
+        extends: extensions,
+        needs: needs,
         stage: 'synth',
         tags: this.options.runnerTags?.synth ?? this.options.runnerTags?.default,
         script,
@@ -191,15 +213,19 @@ awslogin() {
     if (this.options.iamRoleArns?.assetPublishing) {
       script.push(`awslogin '${this.options.iamRoleArns.assetPublishing}'`);
     }
+    const preInstallSteps = (this.options.preInstallSteps ?? []).map(s => s.toGitlab());
+    script.push(...preInstallSteps.flatMap(s => s.commands));
+
+    script.push(...this.renderInstallCommands());
     script.push(...this.getAssetUploadCommands(this.needsVersionedArtifacts));
 
     this.config.addStages('publish_assets');
     this.config.addJobs({
       publish_assets: {
-        extends: ['.aws_base'],
+        extends: ['.aws_base', ...preInstallSteps.flatMap(s => s.extensions)],
         stage: 'publish_assets',
         tags: this.options.runnerTags?.assetPublishing ?? this.options.runnerTags?.default,
-        needs: [{ job: 'synth', artifacts: true }],
+        needs: [{ job: 'synth', artifacts: true }, ...preInstallSteps.flatMap(s => s.needs)],
         script,
       },
     });
@@ -214,14 +240,12 @@ awslogin() {
    * @param {DeploymentStage} stage - The deployment stage configuration to set up.
    */
   protected createDeployment(stage: DeploymentStage): void {
-    const script = [];
-    script.push(`awslogin '${this.options.iamRoleArns?.deployment?.[stage.name] ?? this.options.iamRoleArns?.default}'`);
-    script.push(...this.renderInstallCommands());
+    const preInstallSteps = (this.options.preInstallSteps ?? []).map(s => s.toGitlab());
 
     this.config.addStages(stage.name);
     this.config.addJobs({
       [`diff-${stage.name}`]: {
-        extends: ['.aws_base'],
+        extends: ['.aws_base', ...preInstallSteps.flatMap(s => s.extensions)],
         stage: stage.name,
         tags: this.options.runnerTags?.diff?.[stage.name] ?? this.options.runnerTags?.deployment?.[stage.name] ?? this.options.runnerTags?.default,
         only: {
@@ -230,15 +254,18 @@ awslogin() {
         needs: [
           { job: 'synth', artifacts: true },
           { job: 'publish_assets' },
+          ...preInstallSteps.flatMap(s => s.needs),
         ],
         script: [
           `awslogin '${this.options.iamRoleArns?.diff?.[stage.name] ?? this.options.iamRoleArns?.deployment?.[stage.name] ?? this.options.iamRoleArns?.default}'`,
+          ...preInstallSteps.flatMap(s => s.commands),
           ...this.renderInstallCommands(),
           ...this.renderDiffCommands(stage.name),
         ],
+
       },
       [`deploy-${stage.name}`]: {
-        extends: ['.aws_base', '.artifacts_cdkdeploy'],
+        extends: ['.aws_base', '.artifacts_cdkdeploy', ...preInstallSteps.flatMap(s => s.extensions)],
         stage: stage.name,
         tags: this.options.runnerTags?.deployment?.[stage.name] ?? this.options.runnerTags?.default,
         ...stage.manualApproval && {
@@ -251,15 +278,21 @@ awslogin() {
           { job: 'synth', artifacts: true },
           { job: 'publish_assets' },
           { job: `diff-${stage.name}` },
+          ...preInstallSteps.flatMap(s => s.needs),
         ],
         script: [
           `awslogin '${this.options.iamRoleArns?.deployment?.[stage.name] ?? this.options.iamRoleArns?.default}'`,
+          ...preInstallSteps.flatMap(s => s.commands),
           ...this.renderInstallCommands(),
           ...this.renderDeployCommands(stage.name),
         ],
       },
     });
     this.deploymentStages.push(stage.name);
+  }
+
+  public engineType(): PipelineEngine {
+    return PipelineEngine.GITLAB;
   }
 
 }

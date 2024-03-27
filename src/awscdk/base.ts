@@ -1,6 +1,8 @@
 import { Component, TextFile, awscdk } from 'projen';
 import { PROJEN_MARKER } from 'projen/lib/common';
 import { NodePackageManager } from 'projen/lib/javascript';
+import { PipelineEngine } from '../engine';
+import { PipelineStep } from '../steps';
 
 /**
  * The Environment interface is designed to hold AWS related information
@@ -21,19 +23,6 @@ export interface Environment {
    * availability, and pricing.
    */
   readonly region: string;
-}
-
-/**
- * The CI/CD tooling used to run your pipeline.
- * The component will render workflows for the given system
- */
-export enum PipelineEngine {
-  /** Create GitHub actions */
-  GITHUB,
-  /** Create a .gitlab-ci.yaml file */
-  GITLAB,
-  // /** Create AWS CodeCatalyst workflows */
-  // CODE_CATALYST,
 }
 
 // /**
@@ -112,6 +101,9 @@ export interface CDKPipelineOptions {
   readonly preSynthCommands?: string[];
   readonly postSynthCommands?: string[];
 
+  readonly preInstallSteps?: PipelineStep[];
+  readonly preSynthSteps?: PipelineStep[];
+  readonly postSynthSteps?: PipelineStep[];
 }
 
 /**
@@ -168,6 +160,8 @@ export abstract class CDKPipeline extends Component {
 
   }
 
+  public abstract engineType(): PipelineEngine;
+
   protected renderInstallCommands(): string[] {
     return [
       ...(this.baseOptions.preInstallCommands ?? []),
@@ -196,7 +190,6 @@ export abstract class CDKPipeline extends Component {
 
   protected renderSynthCommands(): string[] {
     return [
-      ...this.renderInstallCommands(),
       ...(this.baseOptions.preSynthCommands ?? []),
       'npx projen build',
       ...(this.baseOptions.postSynthCommands ?? []),
@@ -205,7 +198,6 @@ export abstract class CDKPipeline extends Component {
 
   protected getAssetUploadCommands(needsVersionedArtifacts: boolean): string[] {
     return [
-      ...this.renderInstallCommands(),
       'npx projen publish:assets',
       ...(needsVersionedArtifacts ? [
         'npx projen bump',
